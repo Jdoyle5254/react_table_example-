@@ -19,8 +19,9 @@ function App() {
       } catch(e) {
 
       }
-      fetchData()
+      
     }
+    fetchData()
 
   }, [])
   return (
@@ -28,7 +29,7 @@ function App() {
       <Button variant="text">Text</Button>
       <Button variant="contained">Contained</Button>
       <Button variant="outlined">Outlined</Button>
-      <BasicTable />
+      <BasicTable users = {data} />
     </div>
   );
 }
