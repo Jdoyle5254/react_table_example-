@@ -1,23 +1,34 @@
-import logo from './logo.svg';
+
 import './App.css';
+import Button from '@mui/material/Button'
+import {useState, useEffect} from 'react'
+import BasicTable from './component/BasicTable'
 
 function App() {
+  const [data, setData] = useState([])
+
+  useEffect(() => {
+    const apiURL = 'https://randomuser.me/api/?results=10'
+    
+    const fetchData = async() => {
+      try {
+        const response = await fetch(apiURL)
+        const data = await response.json()
+        setData(data.results)
+
+      } catch(e) {
+
+      }
+      fetchData()
+    }
+
+  }, [])
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Button variant="text">Text</Button>
+      <Button variant="contained">Contained</Button>
+      <Button variant="outlined">Outlined</Button>
+      <BasicTable />
     </div>
   );
 }
